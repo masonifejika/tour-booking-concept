@@ -1,0 +1,145 @@
+/* 
+ *   Mason Ifejika
+ *   --------------------------
+ * 	 I would usually use the LESS CSS pre-processor and then use Grunt to minify my LESS to CSS
+ *   However for the purposes of this concept, I've used plain ol' CSS
+ * 
+ */ 
+
+tour-booking-form {
+	display:					block;
+	background-color:			#fff;
+	position:					absolute;
+	top:						60px;
+	bottom:						0;
+	width:						100%;
+	box-shadow:					0 2px 8px rgba(0, 0, 0, 0.8);
+	border-radius:				5px;
+	overflow:					hidden;
+}
+
+/* Tour Information */
+
+@keyframes pan-photo {
+  from {
+    background-position: left center;
+  }
+  to {
+    background-position: right center;
+  }
+}
+
+tour-booking-form > section.tour-information {
+	position:					relative;
+	width:						45%;
+	height:						100%;
+	float:						left;
+	background-position:		center;
+	background-size:			cover;
+	animation-name:             pan-photo; 
+    animation-duration:         15s; 
+    animation-iteration-count:  infinite;
+    animation-direction:        alternate;
+    animation-timing-function:  ease-in-out;
+}
+
+tour-booking-form > section.tour-information > div {
+	position:					absolute;
+	bottom:						0;
+	width:						100%;
+	background-color:			rgba(255, 255, 255, 0.7);
+	color:						#333;
+	text-align:					center;
+	padding:					20px 0;
+}
+
+tour-booking-form > section.tour-information > div > h3 {
+	text-transform: 			uppercase;
+	margin:						0 0 15px;
+	padding: 					0 20px;
+}
+
+tour-booking-form > section.tour-information > div > span {
+	display:					inline-block;
+	font-weight:				bold;
+	padding:					10px 25px;
+	border:						1px solid #333;
+}
+
+/* Payment Form */
+
+tour-booking-form > form {
+	float:						right;
+	width:						50%;
+	padding:					0 2.5%;
+}
+
+tour-booking-form > form > h2 {
+	font-size:					22px;
+	margin: 					20px 0;
+}
+
+tour-booking-form > form input[type='text'],
+tour-booking-form > form input[type='number'] {
+	border:						none;
+	display:					block;
+	width:						70%;
+	border-bottom:				1px solid #ddd;
+	margin:						5px 0;
+	padding:					10px 0;
+	position:					relative;
+	background-color:			transparent;
+	-moz-appearance:			textfield;
+}
+
+::-webkit-inner-spin-button { -webkit-appearance: none;}
+::-webkit-outer-spin-button { -webkit-appearance: none;}
+
+tour-booking-form > form input[ng-model*='creditCardNo'] {
+	background-image:			url('../images/credit_cards.png');
+	background-repeat:			no-repeat;
+	background-position:		right 0;
+	transition:					background-position 0.3s;
+}
+
+tour-booking-form > form input[ng-model*='creditCardNo'][data-card-type='visa'] {
+	background-position: 		right -35px;
+	transition:					background-position 0.3s;
+}
+
+tour-booking-form > form input[ng-model*='creditCardNo'][data-card-type='mastercard'] {
+	background-position: 		right -71px;
+	transition:					background-position 0.3s;
+}
+
+tour-booking-form > form input[ng-model*='creditCardNo'][data-card-type='amex'] {
+	background-position: 		right -105px;
+	transition:					background-position 0.3s;
+}
+
+tour-booking-form > form input[ng-model*='creditCardCVV'] {
+	width:						10%;
+}
+
+tour-booking-form > form select {
+	margin-top:					15px;
+	box-shadow:					none !important;
+}
+
+tour-booking-form > form input[type='submit'] {
+	border:						none;
+	background-color:			#34a36b;
+	color:						#fff;
+	text-transform:				uppercase;
+	padding:					10px 15px;
+	margin-top:					20px;
+	display:					block;
+}
+
+tour-booking-form > form span.error-message {
+	color:						#ed1b2e;
+	display:					block;
+	margin-top:					10px;
+	font-weight:				bold;
+	font-size:					14px;
+}
