@@ -61,6 +61,7 @@ tourBookingApp.service('creditCardService', function ($http) {
     this.isVerifiedWithLuhnAlgorithm = function (cardNumber) {
     	var isVerified 				= false,
     		noOfDigits 				= cardNumber.toString().length,
+    		isOddNumber				= (noOfDigits % 2 == 1),
     		startingIndex 			= noOfDigits - 2,
     		doubledDigits			= [],
     		totalOfDoubledDigits	= 0,
@@ -78,9 +79,9 @@ tourBookingApp.service('creditCardService', function ($http) {
     		totalOfDoubledDigits += parseInt(doubleDigitsJoined[i]);
     	}
     	// add up all of the unaffected digits
-    	for (var i = 1; i < (noOfDigits + 1); i += 2) {
+    	for (var i = (isOddNumber) ? 0 : 1; i < (noOfDigits + 1); i += 2) {
     		var digit = cardNumber.toString().charAt(i);
-    		totalOfUnaffectedDigits += parseInt(digit);
+    		totalOfUnaffectedDigits += (digit) ? parseInt(digit) : 0;
     	}
     	// now get the result of the Luhn algorithm, the total number needs to end with a zero to be valid
     	luhnResult = totalOfDoubledDigits + totalOfUnaffectedDigits;
